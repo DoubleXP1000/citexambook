@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="modernizr.custom.62074.js"></script>
+		<link rel="stylesheet" href="stylesheet.css">
+		<link href="https://fonts.googleapis.com/css?family=Bacasime+Antique" rel="stylesheet">
+		<title>Exam Registration</title>
+	</head>
+	
+	<body>
+		<div class="container">
+			
+			<main class="form-container">
+			
+				<h1><span class="lock-icon">📝</span>Register for the exam</h1>
+				
+				<h2>Complete necessary feilds</h2>
+				
+				<form action="confirmation.html" method="post">
+				
+					<div class="input-group">
+						<label for="student_id">NSHE ID</label>
+						<input type="text" id="student_id" name="student_id" placeholder="eg: 5006745855" required>
+					</div>
+
+					<div class="input-group">
+						<label for="exam_select">Select the exam</label>
+						<select id="exam_select" name="exam_code" required>
+							<option value="">Select the Exam</option>
+							<option value="C180">CIT 120</option>
+							<option value="C182">CIT 182</option>
+							<option value="C260">CIT 260</option>
+						</select>
+					</div>
+
+                    <div class="input-group">
+						<label for="exam_location">Select the Campus Location</label>
+						<select id="exam_location" name="exam_location" required>
+							<option value="">Select the Campus Location</option>
+							<option value="Chls">Charleston</option>
+							<option value="nlv">NLV</option>
+							<option value="hend">Henderson</option>
+						</select>
+					</div>
+
+					<div class="input-group">
+						<label for="exam_date">Select a date</label>
+						<input type="date" id="exam_date" name="exam_date" required>
+					</div>
+                    <div class="input-group">
+						<label for="exam_time">Select the time</label>
+						<input type="time" id="exam_time" name="exam_time" required>
+					</div>
+
+					
+					<div class="button-group">
+						<button type="submit" class="btn">Register for the Exam</button>
+					</div>
+					
+				</form> </main>
+		</div>
+	</body>
+</html>
