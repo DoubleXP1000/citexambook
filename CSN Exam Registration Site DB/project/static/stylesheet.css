@@ -1,0 +1,190 @@
+/* Modern Dark Theme Stylesheet
+  This replaces the original stylesheet.css
+*/
+
+/* :root is where we can define CSS variables.
+  This makes it easy to change the site's colors later.
+*/
+:root {
+  --bg-dark-primary: #121212;   /* Deepest dark, for the page background */
+  --bg-dark-secondary: #1e1e1e; /* Lighter dark, for the 'card' */
+  --border-color: #333;
+  --text-primary: #e0e0e0;      /* Light gray for body text */
+  --text-secondary: #a0a0a0;    /* Muted gray for sub-headings */
+  --text-white: #ffffff;
+  --accent-primary: #007bff;   /* A vibrant blue for buttons */
+  --accent-primary-hover: #0056b3; /* Darker blue for hover */
+  --accent-secondary: #444;      /* Gray for secondary buttons */
+  --accent-secondary-hover: #555;
+  --font-main: "Bacasime Antique", serif;
+  --font-ui: Arial, sans-serif; /* A clean font for UI elements */
+}
+
+/* Basic setup for the whole page */
+html {
+  height: 100%; /* Ensures the <html> element fills the screen */
+}
+
+body {
+  /* Use the variables we defined in :root */
+  font-family: var(--font-main);
+  background-color: var(--bg-dark-primary);
+  color: var(--text-primary);
+  
+  margin: 0; /* Remove default browser margin */
+  padding: 0; /* Remove default browser padding */
+  
+  /* This is Modern CSS (Flexbox) to center our content.
+    It's a powerful and easy way to do layout.
+  */
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  min-height: 100vh;       /* Makes the body at least 100% of the viewport height */
+
+  /* =======================================
+     NEW CODE FOR BACKGROUND IMAGE
+     ======================================= */
+  background-image: url('CSN-R2CH.png'); /* 1. Specifies the image file */
+  background-size: cover;                  /* 2. Makes the image cover the whole screen */
+  background-position: center;             /* 3. Centers the image in the viewport */
+  background-attachment: fixed;            /* 4. Keeps the image still when scrolling (great effect!) */
+  /* ======================================= */
+}
+
+/* This is the class on the <div> that wraps our main content */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem; /* Add some padding for small screens */
+  box-sizing: border-box; /* Makes padding not add to the width */
+}
+
+/* This is our main "card" style */
+.form-container {
+  background-color: var(--bg-dark-secondary);
+  border: 1px solid var(--border-color);
+  padding: 2.5rem; /* Lots of internal spacing */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* 3D "floating" effect */
+  width: 90%; /* Takes 90% of the screen width */
+  max-width: 450px; /* ...but never gets wider than 450px */
+  text-align: center;
+}
+
+/* Styling for the headings */
+h1 {
+  font-size: 2.5rem;
+  color: var(--text-white);
+  margin-top: 0; /* Remove default space above h1 */
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-weight: normal; /* Makes it thinner than the h1 */
+  margin-bottom: 2rem; /* Add space below the sub-heading */
+}
+
+/* This styles the <div> wrapper for labels and inputs */
+.input-group {
+  margin-bottom: 1.5rem;
+  text-align: left; /* Align labels to the left */
+}
+
+/* Style for the labels (Username, Password) */
+label {
+  display: block; /* Makes the label take its own line */
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+/* This selector styles <input> tags that have type="text" OR type="password".
+  The comma acts as an "OR".
+*/
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* Make the input fill the container */
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-family: var(--font-ui); /* Use the clean UI font for inputs */
+  background-color: #2a2a2a;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  box-sizing: border-box; /* IMPORTANT: Makes padding count *inside* the width, not add to it */
+}
+
+/* This style applies when the user CLICKS inside an input box */
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none; /* Remove the default blue glow (we'll make our own) */
+  border-color: var(--accent-primary); /* Highlight the border with our accent color */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a soft glow */
+}
+
+/* Style for the placeholder text */
+input::placeholder {
+  color: #777;
+}
+
+/* This styles the <div> wrapper for our buttons */
+.button-group {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically by default (good for mobile) */
+  gap: 1rem; /* Adds a 1rem space between the buttons */
+  margin-top: 1.5rem;
+}
+
+/* This is the main button style (for .btn class) */
+.btn {
+  display: inline-block; /* Allows padding and other box styles */
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none; /* Remove underline (for <a> tags) */
+  color: var(--text-white);
+  background-color: var(--accent-primary);
+  border: none; /* Remove default button border */
+  border-radius: 8px;
+  cursor: pointer; /* Show a hand icon on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+  font-family: var(--font-ui);
+}
+
+/* This applies when you HOVER the mouse over any .btn */
+.btn:hover {
+  background-color: var(--accent-primary-hover);
+  transform: translateY(-2px); /* Makes the button "lift" slightly */
+}
+
+/* This style ONLY applies to buttons with .btn AND .btn-secondary */
+.btn.btn-secondary {
+  background-color: var(--accent-secondary);
+}
+
+.btn.btn-secondary:hover {
+  background-color: var(--accent-secondary-hover);
+  transform: translateY(-2px); /* Keep the same lift effect */
+}
+
+
+/* A Media Query makes your site responsive.
+  This CSS only applies if the browser window is AT LEAST 480px wide.
+*/
+@media (min-width: 480px) {
+  
+  /* On wider screens, make the buttons sit side-by-side */
+  .button-group {
+    flex-direction: row; /* Change stacking from vertical (column) to horizontal (row) */
+  }
+
+  /* Make each button in the group take up equal space */
+  .button-group .btn {
+    width: 100%;
+  }
+}
