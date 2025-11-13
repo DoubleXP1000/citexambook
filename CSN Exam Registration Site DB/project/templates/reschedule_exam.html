@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="modernizr.custom.62074.js"></script>
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Bacasime+Antique" rel="stylesheet">
+		<title>Managing exam schedule</title>
+	</head>
+	
+	<body>
+		<div class="container">
+			
+			<main class="form-container">
+			
+				<h1><span class="lock-icon">✏️</span>Changing the exam schedule</h1>
+				
+				<h2>Reschedule or cancel your exam</h2>
+				
+				<form action="#" method="post">
+				
+					<div class="input-group">
+						<label for="student_id">NSHE ID</label>
+						<input type="text" id="student_id" name="student_id" placeholder="eg: 5006745855" required>
+					</div>
+
+					<div class="input-group">
+						<label for="new_date">නව දිනයක් තෝරන්න (නැවත කාලසටහන් කිරීමට)</label>
+						<input type="date" id="new_date" name="new_date">
+					</div>
+					
+					<div class="button-group">
+						<button type="submit" class="btn">නව කාලසටහන සකසන්න</button>
+					</div>
+
+					<div class="button-group" style="margin-top: 2rem;">
+						<button type="submit" class="btn btn-secondary" name="action" value="cancel">ලියාපදිංචිය අවලංගු කරන්න</button>
+					</div>
+					
+				</form> </main>
+		</div>
+	</body>
+</html>
