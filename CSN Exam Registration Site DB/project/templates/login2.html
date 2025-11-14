@@ -18,11 +18,11 @@
 				
 				<h2>Enter your Login Information or Sign-Up</h2>
 				
-				<form action="/" method="POST">
+				<form action="{{ url_for('login') }}" method="POST">
 				
 					<div class="input-group">
 						<label for="user">Username</label>
-						<input type="text" id="user" name="username" placeholder="Your Username.." required>
+						<input type="text" id="user" name="email" placeholder="Your Email or Student ID.." required>
 					</div>
 					
 					<div class="input-group">
@@ -33,8 +33,9 @@
 					<div class="button-group">
 						
 						<button type="submit" class="btn">Login</button>
-						
-						<button type="button" class="btn btn-secondary">Sign-Up</button> 
+					
+
+						<a href="{{ url_for('signup') }}" class="btn" role="button">Sign-Up</a>
 
 					
 					</div>
