@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Bacasime+Antique" rel="stylesheet">
+    
+    <script src="modernizr.custom.62074.js"></script>
+    
+    <style>
+        /* Basic Styling for readability and visual appeal */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* 1. Form Container Styling */
+        .signup-form {
+            width: 450px; /* Set a fixed width for the form */
+            margin: 0 auto; /* Center the form horizontally */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* 2. Flexbox for Alignment (The key to creating clean columns) */
+        .form-group {
+            display: flex; /* Activate flex layout for the row */
+            align-items: center; /* Vertically center items */
+            margin-bottom: 15px;
+        }
+
+        /* 3. Styling the Label Column */
+        .form-group label {
+            flex: 0 0 160px; /* Fixed width of 160px for the label (the first column) */
+            text-align: right; /* Aligns label text to the right edge */
+            padding-right: 15px;
+            font-weight: bold;
+        }
+
+        /* 4. Styling the Input Column */
+        .form-group input,
+        .form-group select {
+            flex: 1; /* Input takes up the rest of the available space (the second column) */
+            padding: 8px;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+        }
+
+        /* Styling for the buttons (placed under the inputs) */
+        .button-group {
+            display: flex;
+            justify-content: flex-end; /* Align buttons to the right */
+            padding-left: 175px; /* Offset buttons past the label width */
+            gap: 10px;
+        }
+        
+        .button-group input[type="reset"],
+        .button-group input[type="submit"] {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 3px;
+        }
+        
+        .button-group input[type="submit"] {
+            background-color: #007bff;
+            color: rgb(142, 109, 109);
+        }
+    </style>
+</head>
+<body>
+
+    <form class="signup-form" action="{{ url_for('signup') }}" method="POST">
+        <h2>SIGN-UP FORM</h2>
+
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name" placeholder="eg:James" required>
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name" placeholder="eg:Martinez" required>
+        </div>
+
+        <div class="form-group">
+            <label for="student_id">Student ID</label>
+            <input type="text" name="student_id" id="student_id" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email"> Student E-mail</label>
+            <input type="email" name="email" id="email" placeholder="eg:5003425673@STUDENT.CSN.EDU" required>
+        </div>
+
+        <div class="form-group">
+            <label for="course">Course</label>
+            <select id="course" name="course" required>
+                <option value="" disabled selected>Select a Course</option>
+                <option value="CIT120">CIT120</option>
+                <option value="CIT182">CIT182</option>
+                <option value="CIT260">CIT260</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Your Password.." required>
+        </div>
+
+        <div class="form-group">
+            <label for="cpassword">Confirm your Password</label>
+            <input type="password" id="cpassword" name="cpassword" placeholder="Re-enter password.." required>
+        </div>
+        
+        <div class="button-group">
+            <input type="reset" value="Reset">
+            <input type="submit" value="Register">
+        </div>
+
+    </form>
+    
+</body>
+</html>
