@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Scheduled</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #e6f7ff; /* Light blue background */
+        }
+        .confirmation-box {
+            width: 80%;
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .details-table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        .details-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .details-table td:first-child {
+            font-weight: bold;
+            color: #555;
+            width: 40%;
+        }
+        .note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .dashboard-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-box">
+        <h1>Examination Scheduled Successfully! 🗓️</h1>
+
+        <p style="text-align: center; color: #333; margin-bottom: 30px;">
+            Your exam slot is confirmed. Please review the details below.
+        </p>
+
+        <table class="details-table">
+            <tr>
+                <td>Exam Name:</td>
+                <td>CIT260 - Systems Analysis and Design</td>
+            </tr>
+            <tr>
+                <td>Date:</td>
+                <td>Friday, January 10, 2026</td>
+            </tr>
+            <tr>
+                <td>Time:</td>
+                <td>10:00 AM - 12:00 PM PST</td>
+            </tr>
+            <tr>
+                <td>Location/Platform:</td>
+                <td>Online (Secure Proctoring Required)</td>
+            </tr>
+            <tr>
+                <td>Confirmation ID:</td>
+                <td>EXAM-20251201-B147</td>
+            </tr>
+        </table>
+        
+        <div class="note">
+            ⚠️ **IMPORTANT:** A detailed email with login instructions and required materials 
+            has been sent. Please check your spam folder if you do not receive it within 5 minutes.
+        </div>
+
+        <a href="user_dashboard.html" class="dashboard-link">Go to Student Dashboard</a>
+    </div>
+
+</body>
+</html>
