@@ -1,45 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="modernizr.custom.62074.js"></script>
-		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
-		<link href="https://fonts.googleapis.com/css?family=Bacasime+Antique" rel="stylesheet">
-		<title>Managing exam schedule</title>
-	</head>
-	
-	<body>
-		<div class="container">
-			
-			<main class="form-container">
-			
-				<h1><span class="lock-icon">✏️</span>Changing the exam schedule</h1>
-				
-				<h2>Reschedule or cancel your exam</h2>
-				
-				<form action="#" method="post">
-				
-					<div class="input-group">
-						<label for="student_id">NSHE ID</label>
-						<input type="text" id="student_id" name="student_id" placeholder="eg: 5006745855" required>
-					</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Bacasime+Antique" rel="stylesheet">
+    <title>Manage Exam Schedule</title>
+    <style>
+        body {
+            font-family: 'Bacasime Antique', serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
 
-					<div class="input-group">
-						<label for="new_date">Select a New Date</label>
-						<input type="date" id="new_date" name="new_date">
-					</div>
-					
-					<div class="button-group">
-						<button type="submit" class="btn">Make the new schedule</button>
-					</div>
+        /* Top navbar */
+        .top-nav {
+            width: 100%;
+            background-color: #007bff;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .top-nav a.dashboard-btn { background-color: #28a745; }
+		.top-nav a.dashboard-btn:hover { background-color: #218838; }
+        .top-nav a.logout-btn { background-color: #dc3545; }
 
-					<div class="button-group" style="margin-top: 2rem;">
-						<button type="submit" class="btn btn-secondary" name="action" value="cancel">Cancel the Registration</button>
-					</div>
-					
-				</form> </main>
-		</div>
-	</body>
+        .container {
+            max-width: 900px;
+            margin: 100px auto 50px auto;
+            padding: 20px;
+            background-color: #222222;
+            border-radius: 8px;
+        }
 
+        h1, h2 {
+            text-align: center;
+            color: #00bfff;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background-color: #dc3545;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-nav">
+    <a href="{{ url_for('dashboard') }}" class="dashboard-btn">Return to Dashboard</a>
+    <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+</div>
+
+<div class="container">
+    <h1>Manage Your Exams</h1>
+    <h2>Reschedule or Cancel</h2>
+
+    {% if exams %}
+    <form action="{{ url_for('schedule') }}" method="post">
+        <!-- Select Exam -->
+        <div class="input-group">
+            <label for="exam_id">Select an Exam</label>
+            <select name="exam_id" id="exam_id" required>
+                <option value="">Select an exam</option>
+                {% for exam in exams %}
+                    <option value="{{ exam.exam_id }}">
+                        {{ exam.exam_code }} | {{ exam.exam_date }} | {{ exam.exam_time }} | {{ exam.exam_location }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- New Date -->
+        <div class="input-group">
+            <label for="new_date">New Date</label>
+            <input type="date" name="new_date" id="new_date">
+        </div>
+
+        <!-- New Time (15-min increments) -->
+        <div class="input-group">
+            <label for="new_time">New Time</label>
+            <select name="new_time" id="new_time">
+                {% for hour in range(8, 18) %}
+                    {% for minute in ["00", "15", "30", "45"] %}
+                        <option value="{{ "%02d:%s" % (hour, minute) }}">
+                            {{ "%02d:%s" % (hour, minute) }}
+                        </option>
+                    {% endfor %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="input-group">
+            <button type="submit" class="btn" name="action" value="reschedule">Reschedule</button>
+            <button type="submit" class="btn btn-secondary" name="action" value="cancel">Cancel</button>
+        </div>
+    </form>
+    {% else %}
+        <p>You have no registered exams.</p>
+    {% endif %}
+</div>
+
+</body>
 </html>

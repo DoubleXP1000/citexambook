@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="modernizr.custom.62074.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Bacasime+Antique" rel="stylesheet">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: 'Bacasime Antique', serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Flash messages styling */
+        #flash-messages {
+            position: fixed;
+            top: 70px; /* below navbar */
+            right: 20px;
+            z-index: 9999;
+        }
+        .flash {
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0.95;
+            transition: opacity 0.5s ease;
+        }
+        .flash.success { background-color: #28a745; }
+        .flash.danger { background-color: #dc3545; }
+
+        /* Top navigation bar */
+        .top-nav {
+            width: 100%;
+            background-color: #007bff;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .top-nav a.exam-btn { background-color: #28a745; }
+        .top-nav a.logout-btn { background-color: #dc3545; }
+        .top-nav a.exam-btn:hover { background-color: #218838; }
+        .top-nav a.logout-btn:hover { background-color: #c82333; }
+
+        .container {
+            max-width: 900px;
+            margin: 120px auto 50px auto; /* add top margin to avoid navbar overlap */
+            padding: 20px;
+            background: #dfdfdf;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(245, 245, 245, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #000000;
+            text-align: left;
+            color: rgb(0, 0, 0);
+            font-size: 20px;
+        }
+        th {
+            background-color: #007bff;
+            color: rgb(255, 255, 255);
+        }
+        tr:hover { background-color: #f1f1f1; }
+
+        .no-exams {
+            text-align: center;
+            padding: 20px;
+            color: #000000;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top navigation -->
+    <div class="top-nav">
+        <a href="{{ url_for('exam') }}" class="exam-btn">Register for New Exam</a>
+        <a href="{{ url_for('schedule') }}" class="exam-btn">Reschedule / Cancel Exam</a>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    </div>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div id="flash-messages">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <h1>Welcome, {{ student.first_name }} {{ student.last_name }}</h1>
+        <h2>Your Registered Exams</h2>
+
+        {% if exams %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exam Code</th>
+                        <th>Course</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for exam in exams %}
+                    <tr>
+                        <td>{{ exam.exam_code }}</td>
+                        <td>{{ exam.course if exam.course else 'N/A' }}</td>
+                        <td>{{ exam.exam_date }}</td>
+                        <td>{{ exam.exam_time }}</td>
+                        <td>{{ exam.exam_location }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="no-exams">
+                You have not registered for any exams yet.
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Auto-hide flash messages -->
+    <script>
+      setTimeout(function() {
+        const flashes = document.querySelectorAll('.flash');
+        flashes.forEach(f => {
+          f.style.opacity = '0';
+          setTimeout(() => f.remove(), 500);
+        });
+      }, 5000); // 5 seconds
+    </script>
+
+</body>
+</html>

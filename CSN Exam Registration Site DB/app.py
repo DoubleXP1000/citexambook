@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify, redirect, url_for, render_template, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from project.models import User  
-from flask_login import login_user
+from flask_login import login_user, logout_user
 from project import create_app, db
+from project.models import Exam
+from flask_login import login_required, current_user
 
 app = create_app()
 
@@ -32,16 +34,110 @@ def login():
     
     return render_template('login2.html')
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()  # This clears the user's session
+    flash("You have been logged out successfully.", "success")
+    return redirect(url_for('login'))  # Redirect to login page
+
+@app.route("/dashboard")
+@login_required
+def dashboard():
+    # Fetch all exams for the logged-in student
+    exams = Exam.query.filter_by(student_id=current_user.student_id).order_by(Exam.exam_date, Exam.exam_time).all()
+    
+    return render_template("dashboard.html", exams=exams, student=current_user)
 
 
-
-@app.route("/ExamRegistration", methods=['GET'])
+@app.route("/ExamRegistration", methods=['GET', 'POST'])
+@login_required
 def exam():
+    if request.method == 'POST':
+        student_id = request.form['student_id']
+        exam_code = request.form['exam_code']
+        exam_location = request.form['exam_location']
+        exam_date = request.form['exam_date']
+        exam_time = request.form['exam_time']
+
+        # --- Step 1: Check for duplicate registration ---
+        existing = Exam.query.filter_by(
+            student_id=student_id,
+            exam_code=exam_code,
+            exam_date=exam_date,
+            exam_time=exam_time
+        ).first()
+
+        if existing:
+            flash("You have already registered for this exam at the selected date and time.", "danger")
+            return redirect(url_for('exam'))
+
+        # --- Step 2: Create new registration ---
+        reg = Exam(
+            student_id=student_id,
+            exam_code=exam_code,
+            exam_location=exam_location,
+            exam_date=exam_date,
+            exam_time=exam_time
+        )
+
+        db.session.add(reg)
+        db.session.commit()
+
+        # --- Step 3: Show confirmation ---
+        return render_template(
+            "confirmation.html",
+            student_id=student_id,
+            exam_code=exam_code,
+            exam_location=exam_location,
+            exam_date=exam_date,
+            exam_time=exam_time
+        )
+
     return render_template('register_exam.html')
 
-@app.route("/ExamSchedule", methods=['GET'])
+
+@app.route("/ExamSchedule", methods=['GET', 'POST'])
+@login_required
 def schedule():
-    return render_template('reschedule_exam.html')
+    # Fetch all exams for current user
+    exams = Exam.query.filter_by(student_id=current_user.student_id).order_by(Exam.exam_date, Exam.exam_time).all()
+
+    if request.method == 'POST':
+        exam_id = request.form.get('exam_id')
+        new_date = request.form.get('new_date')
+        new_time = request.form.get('new_time')
+        action = request.form.get('action')
+
+        if not exam_id:
+            flash("No exam selected.", "danger")
+            return redirect(url_for('schedule'))
+
+        # Get exam using correct primary key
+        exam_to_update = Exam.query.get(int(exam_id))
+
+        if not exam_to_update:
+            flash("Selected exam not found.", "danger")
+            return redirect(url_for('schedule'))
+
+        if action == 'cancel':
+            db.session.delete(exam_to_update)
+            db.session.commit()
+            flash("Exam canceled successfully!", "success")
+        elif action == 'reschedule':
+            if new_date:
+                exam_to_update.exam_date = new_date
+            if new_time:
+                exam_to_update.exam_time = new_time
+            db.session.commit()
+            flash("Exam rescheduled successfully!", "success")
+
+        return redirect(url_for('schedule'))
+
+    return render_template('reschedule_exam.html', exams=exams)
+
+
+
 
 
 

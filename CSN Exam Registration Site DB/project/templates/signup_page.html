@@ -1,70 +1,87 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="modernizr.custom.62074.js"></script>
-		
-		<link href="https://fonts.googleapis.com/css?family=Bacasime+Antique" rel="stylesheet">
-		<title>Registration Form </title>
-	</head>
-	<body>
-	<h2>SIGN-UP FORM</h2>
-		
-		<table>
-		<tr>
-			<td>First Name</td>
-			<td><input type="text" name="fname" id="fname" placeholder="eg:James"></td>
-		</tr>
-		<tr>
-			<td>Last Name</td>
-			<td><input type="text" name="lname" id="lname" placeholder="eg:Martinez"></td>
-		</tr>
-		<tr>
-			<td>Company/Institue</td>
-			<td><input type="text" name="company" id="company"></td>
-		</tr>
-		<tr>
-			<td>Address</td>
-			<td><textarea rows="5" ></textarea></td>
-		</tr>
-		
-		
-		<tr>
-			<td>E-mail</td>
-			<td><input type="email" name="email" placeholder="eg:example@gmail.com" ></td>
-		</tr>
-		<tr>
-			<td>Telephone Number</td>
-			<td><input type="tel" name="phone" id="company" placeholder="eg:+1 xxx xxxxxxx"></td>
-		</tr>
-		<tr>
-			<td>Course</td>
-			<td><select id="course" name="course">
-				<option value="c1">CIT120 </option>
-				<option value="c2">CIT182</option>
-				<option value="c3">CIT260</option>
-			</td>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="modernizr.custom.62074.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bacasime+Antique" rel="stylesheet">
+    <title>Registration Form</title>
+    <style>
+        input[type=submit], input[type=reset], .back-btn {
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .back-btn {
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>SIGN-UP FORM</h2>
 
-		</tr>
-		</table>
+    <!-- Wrap the whole form in a form tag -->
+    <form action="{{ url_for('register') }}" method="post">
 
         <table>
-        <tr>
-            <td>Password</td>
-            <td><input type="password" id="pass" name="password" placeholder="Your Password.." required></td>
-        </tr>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" name="fname" id="fname" placeholder="eg:James" required></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" name="lname" id="lname" placeholder="eg:Martinez" required></td>
+            </tr>
+            <tr>
+                <td>Company/Institute</td>
+                <td><input type="text" name="company" id="company"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea name="address" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td><input type="email" name="email" placeholder="eg:example@gmail.com" required></td>
+            </tr>
+            <tr>
+                <td>Telephone Number</td>
+                <td><input type="tel" name="phone" id="phone" placeholder="eg:+1 xxx xxxxxxx"></td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>
+                    <select id="course" name="course" required>
+                        <option value="c1">CIT120</option>
+                        <option value="c2">CIT182</option>
+                        <option value="c3">CIT260</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="pass" name="password" placeholder="Your Password.." required></td>
+            </tr>
         </table>
-		
-		<table>
-		
-		<tr>
-		<td align="right"><input type="reset" value="Reset"></td>
-		<td align="right"><input type="submit" value="Register"></td>
-		</tr>
-		
-		</table>
-	
-		
-	</body>
+
+        <div style="margin-top: 15px;">
+            <!-- Back button -->
+            <a href="{{ url_for('exam') }}" class="back-btn">Back to Registration Page</a>
+
+            <!-- Reset & Submit buttons -->
+            <input type="reset" value="Reset">
+            <input type="submit" value="Register">
+        </div>
+
+    </form>
+</body>
 </html>

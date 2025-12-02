@@ -6,7 +6,6 @@
     <title>Registration Form</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Bacasime+Antique" rel="stylesheet">
-    
     <script src="modernizr.custom.62074.js"></script>
     
     <style>
@@ -16,47 +15,47 @@
             padding: 20px;
         }
 
-        /* 1. Form Container Styling */
+        /* Form Container Styling */
         .signup-form {
-            width: 450px; /* Set a fixed width for the form */
-            margin: 0 auto; /* Center the form horizontally */
+            width: 450px;
+            margin: 0 auto;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        /* 2. Flexbox for Alignment (The key to creating clean columns) */
+        /* Flexbox for Alignment */
         .form-group {
-            display: flex; /* Activate flex layout for the row */
-            align-items: center; /* Vertically center items */
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
         }
 
-        /* 3. Styling the Label Column */
+        /* Label Styling */
         .form-group label {
-            flex: 0 0 160px; /* Fixed width of 160px for the label (the first column) */
-            text-align: right; /* Aligns label text to the right edge */
+            flex: 0 0 160px;
+            text-align: right;
             padding-right: 15px;
             font-weight: bold;
         }
 
-        /* 4. Styling the Input Column */
+        /* Input Styling */
         .form-group input,
         .form-group select {
-            flex: 1; /* Input takes up the rest of the available space (the second column) */
+            flex: 1;
             padding: 8px;
             border: 1px solid #aaa;
             border-radius: 3px;
         }
 
-        /* Styling for the buttons (placed under the inputs) */
+        /* Buttons Styling */
         .button-group {
             display: flex;
-            justify-content: flex-end; /* Align buttons to the right */
-            padding-left: 175px; /* Offset buttons past the label width */
+            justify-content: flex-end;
+            padding-left: 175px; /* Offset past label width */
             gap: 10px;
         }
-        
+
         .button-group input[type="reset"],
         .button-group input[type="submit"] {
             padding: 10px 20px;
@@ -64,10 +63,26 @@
             border: none;
             border-radius: 3px;
         }
-        
+
         .button-group input[type="submit"] {
             background-color: #007bff;
             color: rgb(142, 109, 109);
+        }
+
+        /* Back button styling */
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #6c757d; /* Gray */
+            color: white;
+            border-radius: 3px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .back-btn:hover {
+            background-color: #5a6268;
         }
     </style>
 </head>
@@ -92,7 +107,7 @@
         </div>
 
         <div class="form-group">
-            <label for="email"> Student E-mail</label>
+            <label for="email">Student E-mail</label>
             <input type="email" name="email" id="email" placeholder="eg:5003425673@STUDENT.CSN.EDU" required>
         </div>
 
@@ -117,11 +132,14 @@
         </div>
         
         <div class="button-group">
+            <!-- Back button -->
+            <a href="{{ url_for('login') }}" class="back-btn">Back</a>
+
             <input type="reset" value="Reset">
             <input type="submit" value="Register">
         </div>
 
     </form>
-    
+
 </body>
 </html>

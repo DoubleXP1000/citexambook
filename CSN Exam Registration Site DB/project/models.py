@@ -16,9 +16,19 @@ class User(UserMixin, db.Model):
         return str(self.student_id)  # must return a string
 
 class Exam(db.Model):
-    exam_id = db.Column(db.String(20), primary_key=True)
-    date = db.Column(db.Date, nullable=False)
-    course = db.Column(db.String(100), nullable=False)
+    __tablename__ = 'exams'   # this prevents table-name issues
+
+    exam_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
+    student_id = db.Column(db.String(20), nullable=False)     # NSHE ID from form
+    exam_code = db.Column(db.String(20), nullable=False)      # C120 / C180 / C260
+    exam_location = db.Column(db.String(20), nullable=False)  # nlv / chls / hend
+    exam_date = db.Column(db.String(20), nullable=False)      # YYYY-MM-DD
+    exam_time = db.Column(db.String(20), nullable=False)      # HH:MM
+
+    def __repr__(self):
+        return f"<Exam {self.student_id} - {self.exam_code}>"
+
 
 class Location(db.Model):
     location_id = db.Column(db.String(20), primary_key=True)
