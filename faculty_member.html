@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty: Create New Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .exam-form-container {
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #004d99;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        /* Flexbox for Alignment (Creating clean columns) */
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        /* Label Column */
+        .form-group label {
+            flex: 0 0 180px; /* Fixed width for the label column */
+            text-align: right;
+            padding-right: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Input/Select Column */
+        .form-group input,
+        .form-group select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Special alignment for the Location/Room row */
+        .location-group {
+            display: flex;
+            gap: 10px; /* Space between campus and room inputs */
+        }
+        
+        /* The entire location/room group needs to share the single input column space */
+        .form-group .location-group {
+            flex: 1; 
+        }
+
+        /* Button Group */
+        .button-group {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .post-button {
+            padding: 12px 30px;
+            background-color: #28a745; /* Green for posting/success */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        .post-button:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="exam-form-container">
+        <h2>Faculty: Create New Exam Schedule</h2>
+        
+        <form action="create_exam.php" method="POST">
+            
+            <div class="form-group">
+                <label for="exam_course">Course Code & Exam</label>
+                <input type="text" id="exam_course" name="exam_course" placeholder="e.g., CIT260 Final Exam" required>
+            </div>
+
+            <div class="form-group">
+                <label for="instructor_name">Instructor Name</label>
+                <input type="text" id="instructor_name" name="instructor_name" placeholder="e.g., Prof. Coombs" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="exam_datetime">Date and Time</label>
+                <input type="datetime-local" id="exam_datetime" name="exam_datetime" required>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <label for="campus_location">Campus Location</label>
+                <select id="campus_location" name="campus_location" required>
+                    <option value="" disabled selected>Select Campus</option>
+                    <option value="csn_nlv">CSN NLV</option>
+                    <option value="csn_henderson">CSN Henderson</option>
+                    <option value="csn_charleston">CSN Charleston</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="room_building">Building & Room</label>
+                <div class="location-group">
+                    <select id="room_building" name="room_building" style="width: 35%;">
+                        <option value="" disabled selected>Building</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select>
+                    <input type="text" id="room_number" name="room_number" placeholder="Room Number (e.g., 203)" style="width: 65%;" required>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <input type="submit" value="Post Exam Schedule" class="post-button">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
