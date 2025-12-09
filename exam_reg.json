@@ -1,0 +1,33 @@
+[
+    {
+        "student_id": "5464513251",
+        "exam_code": null,
+        "exam_location": "Charleston",
+        "exam_date": "2025-12-16",
+        "exam_time": "12:05 - 14:05"
+    },
+    {
+        "student_id": "6464842121",
+        "exam_code": null,
+        "exam_location": "NLV",
+        "exam_date": "2025-12-16",
+        "exam_time": "10:00 - 12:00"
+    },
+    {
+        "student_id": "2755731407",
+        "exam_code": null,
+        "exam_location": "NLV",
+        "exam_date": "2025-12-15",
+        "exam_time": "12:05 - 14:05"
+    },
+    {
+        "student_id": "50102695831",
+        "exam_code": null,
+        "exam_location": "NLV",
+        "exam_date": "2025-12-10",
+        "exam_time": "12:05 - 14:05",
+        "course_name": "CIT",
+        "course_code": "CIT180",
+        "test_room": "Test Center Building S Room 001"
+    }
+]

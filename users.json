@@ -1,0 +1,130 @@
+[
+    {
+        "first_name": null,
+        "last_name": null,
+        "student_id": null,
+        "email": null,
+        "course": null,
+        "password": "$2y$12$\/CsyUD75miJyLH6Uh\/4Pluthy7HtzHtacAU6pj16EecJCIkYgT\/Ue"
+    },
+    {
+        "first_name": null,
+        "last_name": null,
+        "student_id": null,
+        "email": null,
+        "course": null,
+        "password": "$2y$12$L41xosf4UkwOATQhfz4jzOaAmDe7qqdp69CVO3y5DdIvRiwitAbnS"
+    },
+    {
+        "first_name": null,
+        "last_name": null,
+        "student_id": null,
+        "email": null,
+        "course": null,
+        "password": "$2y$12$o0ArMX0qFH2.o18xjtwYTOiuc.w42nx3O8B0AyfO2g9rDlpxp7lEq"
+    },
+    {
+        "first_name": "Anthea",
+        "last_name": "Dang",
+        "student_id": "2438613166",
+        "email": "2438613166@student.csn.edu",
+        "course": "CIT120",
+        "password": "$2y$12$FKHY17\/vqpSqEopoN3KQSOuUSL7rDsOoo5L1Fi6XOZe8CQZ6TxO3a"
+    },
+    {
+        "first_name": "Albert",
+        "last_name": "Artiga",
+        "student_id": "0466791306",
+        "email": "0466791306@student.csn.edu",
+        "course": "CIT120",
+        "password": "$2y$12$94yi48wdPomoToB8a7KxGeO3ZMH1Npy.3GlKNVkpQI62.kDH2wUHO"
+    },
+    {
+        "first_name": "Anthea",
+        "last_name": "Dang",
+        "student_id": "6292684719",
+        "email": "6292684719@student.csn.edu",
+        "course": "CIT182",
+        "password": "$2y$12$AbVQIRqCjKRdv3LvPcBLB.\/L2FbQ3\/GNlbqW81w2TzBlN6rw8Hfkq"
+    },
+    {
+        "first_name": "Anthea",
+        "last_name": "Dang",
+        "student_id": "6610316883",
+        "email": "6610316883@student.csn.edu",
+        "course": "CIT260",
+        "password": "$2y$12$EJys0anexmMfJDVRDNHdiOSoM\/X57\/1GDvATSrm\/P.CjN3Ephv3NS"
+    },
+    {
+        "first_name": "Sathya",
+        "last_name": "Hewage",
+        "student_id": "2755731407",
+        "email": "2755731407@student.csn.edu",
+        "course": "CIT182",
+        "password": "$2y$12$yHmiSntCoKWqB\/A0BLuKBOmddvV6oOpgAI1Acmi8TvdA2IKSf0ncO"
+    },
+    {
+        "first_name": "Anthea",
+        "last_name": "Dang",
+        "student_id": "5010295831",
+        "email": "5010295831@student.csn.edu",
+        "course": "CIT120",
+        "password": "$2y$12$MwYbwgTcOtxuBJ18ItqCBOMYnn5uCdsjKMEFEz93\/DxUI4QfKdNOO"
+    },
+    {
+        "first_name": "Albert",
+        "last_name": "Artiga",
+        "student_id": "5010295831",
+        "email": "5010295831@student.csn.edu",
+        "course": "CIT182",
+        "password": "$2y$12$QPo.YLc6\/rO60fVWXJJunOL2t\/BgVvb9d5dHkFcKP1HCrwxeBD1Y."
+    },
+    {
+        "first_name": "Paul",
+        "last_name": "Gabriel Paulino",
+        "student_id": "8185533841",
+        "email": "8185533841@student.csn.edu",
+        "course": "CIT260",
+        "password": "$2y$12$KBRLzEV5j9sYbKLaJeWFZ.FhwaX1CC5RUdFCE4IODOcBGE2M.\/GKq"
+    },
+    {
+        "first_name": "Sathya",
+        "last_name": "Hewage",
+        "student_id": "6092442811",
+        "email": "6092442811@student.csn.edu",
+        "course": "CIT182",
+        "password": "$2y$12$tjQsSKWCzfX50h7NMVhvr.A4dlB3\/kKr2ah6luO0aLRKCesNmZEFW"
+    },
+    {
+        "first_name": "Paul",
+        "last_name": "Gabriel Paulino",
+        "student_id": "3335092587",
+        "email": "3335092587@student.csn.edu",
+        "course": "CIT182",
+        "password": "$2y$12$YstQXxuMXFjKYH9GLFaXeOGtxIJTx2iPtQ9iRI7nOLXaIpU7E6nE."
+    },
+    {
+        "first_name": "Sathya",
+        "last_name": "Hewage",
+        "student_id": "3333882335",
+        "email": "3333882335@student.csn.edu",
+        "course": "CIT182",
+        "password": "$2y$12$gGDvvs8HZRid8vZbmbzP1e6AzRw65pigZLfwgv\/F84.j3spg4s90G"
+    },
+    {
+        "first_name": "Albert",
+        "last_name": "Artiga",
+        "student_id": "2647429299",
+        "email": "2647429299@student.csn.edu",
+        "course": "CIT120",
+        "password": "$2y$12$yl8pAYa\/.HqTSg\/tA3LtLOyZBFwy1UUDKaG2MeulHonYu9IWEl1Tu"
+    },
+    {
+        "first_name": "Paul",
+        "last_name": "Gabriel Paulino",
+        "student_id": "3357959825",
+        "email": "3357959825@student.csn.edu",
+        "course": "CIT182",
+        "password": "$2y$12$Fy1Wh\/\/T2i9y1VpY3VmKMO02M.Fh\/t3NPNJop.3qajPgfu42HeON."
+    }
+]
